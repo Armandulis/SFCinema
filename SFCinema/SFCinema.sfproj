@@ -32,6 +32,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CinemaAPI\CinemaAPI.csproj">
+      <ServiceLaunchUrl>http://{MachineName}:{ServicePort}/weatherforecast</ServiceLaunchUrl>
+    </ProjectReference>
     <ProjectReference Include="..\FoodApi\FoodApi.csproj">
       <ServiceLaunchUrl>http://{MachineName}:{ServicePort}/weatherforecast</ServiceLaunchUrl>
     </ProjectReference>
