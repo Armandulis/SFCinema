@@ -12,7 +12,12 @@ namespace CinemaAPI.Controllers
     public class CinemaController : ControllerBase
     {
        
-
+        [HttpGet]
+        [Route("get")]
+        public async Task<string> Get()
+        {
+            return "GetMethodInvoked";
+        }
 
     }
 }
