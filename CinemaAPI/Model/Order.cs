@@ -8,7 +8,7 @@ namespace CinemaAPI.Model
     public class Order
     {
         public int id { get; set; }
-        public string ticket { get; set; }
+        public string movie { get; set; }
         public string food { get; set; }
     }
 }
