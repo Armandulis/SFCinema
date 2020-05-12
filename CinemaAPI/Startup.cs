@@ -33,7 +33,11 @@ namespace CinemaAPI
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                
+                /*
+                * dbContext = new CinemaApiContext("connectionString");
+                *
+                */
+
                 var services = scope.ServiceProvider;
                 var dbContext = services.GetService<CinemaApiContext>();
                 var dbInitializer = services.GetService<IDbInitializer>();

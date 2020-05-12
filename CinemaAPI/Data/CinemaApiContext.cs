@@ -1,14 +1,19 @@
 ﻿using CinemaAPI.Model;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 
 namespace CinemaAPI.Data
 {
     public class CinemaApiContext : DbContext
     {
-        public CinemaApiContext(DbContextOptions<CinemaApiContext> options):base(options)
+        public DbSet<Order> Orders { get; set; }
+        public CinemaApiContext(string connectionString):base(connectionString)
         {
         }
 
-        public DbSet<Order> Orders { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().ToTable("Order");
+        }
+
     }
 }
