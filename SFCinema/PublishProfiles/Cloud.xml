@@ -20,7 +20,7 @@
                                     AzureActiveDirectory="true"
                                     ServerCertThumbprint="0123456789012345678901234567890123456789" />
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="" />
-  <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+  <ClusterConnectionParameters ConnectionEndpoint="sfsynopsis.westeurope.cloudapp.azure.com:19000" X509Credential="true" ServerCertThumbprint="A5501D07F8C38A7D0C4DA026946B8FCFAF8BFD45" FindType="FindByThumbprint" FindValue="A5501D07F8C38A7D0C4DA026946B8FCFAF8BFD45" StoreLocation="CurrentUser" StoreName="My" />
+  <ApplicationParameterFile Path="..\ApplicationParameters\Local.1Node.xml" />
   <CopyPackageParameters CompressPackage="true" />
 </PublishProfile>

@@ -38,19 +38,56 @@
          ServiceFabric PowerShell module.
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+    <!-- CINEMA SERVICE -->
     <Service Name="CinemaAPI" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="CinemaAPIType" InstanceCount="[CinemaAPI_InstanceCount]">
         <SingletonPartition />
+        <LoadMetrics>
+          <LoadMetric Name="MetricB" Weight="High" />
+        </LoadMetrics>
+        <!-- AUTOSCALING POLICIES 
+        <ServiceScalingPolicies>
+          <ScalingPolicy>
+            <AveragePartitionLoadScalingTrigger MetricName="MetricB" LowerLoadThreshold="1" UpperLoadThreshold="2" ScaleIntervalInSeconds="100" />
+            <InstanceCountScalingMechanism MinInstanceCount="3" MaxInstanceCount="4" ScaleIncrement="1" />
+          </ScalingPolicy>
+          
+        </ServiceScalingPolicies>
+      -->
+        <!-- AUTOSCALING POLICIES 
+        <ServiceScalingPolicies>
+          <ScalingPolicy>
+            <AveragePartitionLoadScalingTrigger MetricName="MetricB" LowerLoadThreshold="1" UpperLoadThreshold="2" ScaleIntervalInSeconds="100" />
+            <InstanceCountScalingMechanism MinInstanceCount="3" MaxInstanceCount="4" ScaleIncrement="1" />
+          </ScalingPolicy>
+        </ServiceScalingPolicies>
+        -->
+        <!-- AUTOSCALING POLICIES 
+        <ServiceScalingPolicies>
+          <ScalingPolicy>
+            <AveragePartitionLoadScalingTrigger MetricName="MetricB" LowerLoadThreshold="1" UpperLoadThreshold="2" ScaleIntervalInSeconds="100" />
+            <InstanceCountScalingMechanism MinInstanceCount="3" MaxInstanceCount="4" ScaleIncrement="1" />
+          </ScalingPolicy>
+        </ServiceScalingPolicies>
+        -->
       </StatelessService>
     </Service>
+    <!-- FOOD SERVICE -->
     <Service Name="FoodApi" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="FoodApiType" InstanceCount="[FoodApi_InstanceCount]">
         <SingletonPartition />
+        <LoadMetrics>
+          <LoadMetric Name="MetricB" Weight="High" />
+        </LoadMetrics>
       </StatelessService>
     </Service>
+    <!-- TICKET SERVICE -->
     <Service Name="TicketsApi" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="TicketsApiType" InstanceCount="[TicketsApi_InstanceCount]">
         <SingletonPartition />
+        <LoadMetrics>
+          <LoadMetric Name="MetricB" Weight="High" />
+        </LoadMetrics>
       </StatelessService>
     </Service>
   </DefaultServices>

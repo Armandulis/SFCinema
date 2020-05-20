@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FoodApi.Models
+namespace CinemaAPI.Models
 {
     public class Food
     {

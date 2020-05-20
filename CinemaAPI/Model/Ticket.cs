@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FoodApi.Models
+namespace CinemaAPI.Models
 {
-    public class Food
+    public class Ticket
     {
         [Key]
         public int Id { get; set; }
+        public string Movie { get; set; }
         public decimal Price { get; set; }
-        public int AmountLeft { get; set; }
+        public int TicketsLeft { get; set; }
     }
 }
