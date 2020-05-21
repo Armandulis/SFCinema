@@ -41,6 +41,19 @@ namespace TicketsApi.Controllers
             return null;
         }
 
+        // GET: api/Tickets/5
+        [HttpGet("{id}")]
+        [Route("GetByTitle/{title}")]
+        public Ticket GetByTitle(string title)
+        {
+            if (title != "")
+            {
+                return _repo.GetByTitle(title);
+            }
+
+            return null;
+        }
+
         // POST: api/Tickets
         [HttpPost]
         public IActionResult Post([FromBody] Ticket ticket)

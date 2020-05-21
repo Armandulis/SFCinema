@@ -9,6 +9,7 @@ namespace CinemaAPI.Infrastructure
         public CinemaApiContext(string connectionString) : base(connectionString)
         {
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) { Database.SetInitializer<CinemaApiContext>(null); base.OnModelCreating(modelBuilder); }
 
     }
 }

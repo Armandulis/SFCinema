@@ -14,6 +14,7 @@ namespace TicketsApi.Infrastructure
         // Read
         Ticket GetTicket(int id);
         IEnumerable<Ticket> GetAll();
+        Ticket GetByTitle(string title);
 
         // Update
         void Edit(Ticket ticket);

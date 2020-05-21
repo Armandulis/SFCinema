@@ -46,6 +46,11 @@ namespace TicketsApi.Infrastructure
             return db.Tickets.ToList();
         }
 
+        public Ticket GetByTitle(string title)
+        {
+            return db.Tickets.FirstOrDefault(p => p.Movie == title);
+        }
+
         public Ticket GetTicket(int id)
         {
 
