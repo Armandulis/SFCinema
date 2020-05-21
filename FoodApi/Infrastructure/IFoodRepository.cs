@@ -14,6 +14,7 @@ namespace FoodApi.Infrastructure
 
         // Read
         Food GetFood(int id);
+        Food GetFoodByName(string name);
         IEnumerable<Food> GetAll();
 
         // Update

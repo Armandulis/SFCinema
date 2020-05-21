@@ -47,5 +47,9 @@ namespace FoodApi.Infrastructure
             return db.Food.FirstOrDefault(p => p.Id == id);
         }
 
+        public Food GetFoodByName(string name)
+        {
+            return db.Food.FirstOrDefault(p => p.FoodName.ToLower().Equals(name.ToLower()));
+        }
     }
 }
