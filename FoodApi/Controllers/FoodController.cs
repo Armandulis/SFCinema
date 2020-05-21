@@ -38,6 +38,18 @@ namespace FoodApi.Controllers
 
             return null;
         }
+        // GET: api/Food/Popcorn
+        [HttpGet("{FoodName}")]
+        [Route("GetByName/{name}")]
+        public Food GetByName(string name)
+        {
+            if (!String.IsNullOrEmpty(name))
+            {
+                return _repo.GetFoodByName(name);
+            }
+
+            return null;
+        }
 
         // POST: api/Food
         [HttpPost]

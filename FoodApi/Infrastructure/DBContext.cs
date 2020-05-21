@@ -13,7 +13,11 @@ namespace FoodApi.Infrastructure
         {
 
         }
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<DBContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
         public IDbSet<Food> Food { get; set; }
 
     }
