@@ -12,7 +12,7 @@ namespace FoodApi.Infrastructure
         public FoodRepository()
         {
 
-            db = new DBContext("Server=tcp:sfsynopsis.database.windows.net,1433;Initial Catalog=SFSynopsis;Persist Security Info=False;User ID=armandas;Password=L96h8an9a;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            db = new DBContext("Server=tcp:sfsynopsis.database.windows.net,1433;Initial Catalog=SFSynopsis;Persist Security Info=False;User ID=armandas;Password=SFCinema1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
         }
         public Food Create(Food food)
