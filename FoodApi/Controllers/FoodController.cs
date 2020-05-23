@@ -64,7 +64,7 @@ namespace FoodApi.Controllers
             return Ok();
         }
 
-        // PUT: api/Food/5
+        // PUT: api/Food
         [HttpPut]
         public IActionResult Put([FromBody] Food food)
         {

@@ -52,9 +52,9 @@ namespace CinemaAPI.Controllers
 
             // Call ProductApi to get the food ordered
             RestClient c = new RestClient();
-
-            c.BaseUrl = new Uri("http://desktop-661danr:19081/SFCinema/TicketsApi/api/tickets");
-            var requestTicket = new RestRequest(order.Food.ToString(), Method.GET);
+            //desktop-661danr
+            c.BaseUrl = new Uri("http://desktop-661danr:19081/SFCinema/TicketsApi/api/tickets/getbytitle");
+            var requestTicket = new RestRequest(order.Movie.ToString(), Method.GET);
 
             var responseTicket = c.Execute<Ticket>(requestTicket);
             var orderedTicket = responseTicket.Data;
@@ -62,7 +62,9 @@ namespace CinemaAPI.Controllers
             if (order.TicketQuantity <= orderedTicket.TicketsLeft)
             {
                 orderedTicket.TicketsLeft = orderedTicket.TicketsLeft - order.TicketQuantity;
-                var updateTicketRequest = new RestRequest(orderedTicket.Id.ToString(), Method.PUT);
+
+                c.BaseUrl = new Uri("http://desktop-661danr:19081/SFCinema/TicketsApi/api/tickets");
+                var updateTicketRequest = new RestRequest("", Method.PUT);
                 updateTicketRequest.AddJsonBody(orderedTicket);
                 var updateTicketResponse = c.Execute(updateTicketRequest);
 
@@ -70,7 +72,7 @@ namespace CinemaAPI.Controllers
                 {
                     order.Price = order.TicketQuantity * orderedTicket.Price;
 
-                    c.BaseUrl = new Uri("https://sfsynopsis.westeurope.cloudapp.azure.com:19081/SFCinema/FoodApi/api/food");
+                    c.BaseUrl = new Uri("http://desktop-661danr:19081/SFCinema/FoodApi/api/food/getbyname");
                     var requestFood = new RestRequest(order.Food.ToString(), Method.GET);
 
                     var responseFood = c.Execute<Food>(requestFood);
@@ -79,24 +81,23 @@ namespace CinemaAPI.Controllers
                     if (order.FoodQuantity <= orderedFood.AmountLeft)
                     {
                         orderedFood.AmountLeft = orderedFood.AmountLeft - order.FoodQuantity;
-                        var updateFoodRequest = new RestRequest(orderedFood.Id.ToString(), Method.PUT);
+
+                        c.BaseUrl = new Uri("http://desktop-661danr:19081/SFCinema/FoodApi/api/food");
+                        var updateFoodRequest = new RestRequest("", Method.PUT);
                         updateFoodRequest.AddJsonBody(orderedFood);
                         var updateFoodResponse = c.Execute(updateFoodRequest);
 
                         if (updateFoodResponse.IsSuccessful)
                         {
-                            order.Price = order.FoodQuantity * orderedFood.Price;
+                            order.Price = order.Price + order.FoodQuantity * orderedFood.Price;
                             return _repo.Add(order);
                         }
                     }
 
-
                     return _repo.Add(order);
                 }
             }
-
-
-            return _repo.Add(order);
+            return null;
         }
 
         // PUT: api/Cinema/5
